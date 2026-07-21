@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Dotnet restore') {
             when {
-                anyOf {
-                    branch 'main'
-                    branch 'feature'
-                }
+                branch 'main'
             }
             steps {
                 bat 'dotnet restore'
@@ -16,10 +13,7 @@ pipeline {
 
         stage('Dotnet build') {
             when {
-                anyOf {
-                    branch 'main'
-                    branch 'feature'
-                }
+                branch 'main'
             }
             steps {
                 bat 'dotnet build --no-restore'
@@ -28,10 +22,7 @@ pipeline {
 
         stage('Dotnet test') {
             when {
-                anyOf {
-                    branch 'main'
-                    branch 'feature'
-                }
+                branch 'main'
             }
             steps {
                 bat 'dotnet test --no-build --verbosity normal'
